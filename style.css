@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #ffd4e5 0%, #c4a7ff 25%, #a7d8ff 50%, #ffb8d1 75%, #ffd4e5 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    min-height: 100vh;
+}
+h1 {
+    background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+    animation: gradientShift 4s ease infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+h1:hover {
+    transform: scale(1.1) rotate(-2deg);
+    filter: drop-shadow(0 10px 25px rgba(255, 105, 180, 0.5));
+    animation: gradientShift 1s ease infinite;
+}
+
+
+p {
+    font-size: 1.2em;
+}
+
+.message {
+    margin-top: 75px;
+    font-size: 1.5em;
+    color: #333333;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.message:hover {
+    transform: scale(1.05) translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+    color: #ff69b4;
+}
+
+.button {
+    margin-top: 30px;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 1.2em !important;
+    font-weight: bold;
+    color: #fff !important;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+}
+
+button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.cd-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.cd-disc {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: url('cd cover.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.7),
+        inset 0 2px 5px rgba(255, 255, 255, 0.1),
+        inset -2px -2px 10px rgba(0, 0, 0, 0.9),
+        0 0 50px rgba(100, 150, 200, 0.2);
+    animation: spinCD 4s linear infinite;
+    position: relative;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+}
+
+.cd-disc::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 60%),
+        radial-gradient(circle, #ffd700 0%, #ffb700 40%, #cc8a00 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        inset -3px -3px 8px rgba(0, 0, 0, 0.6),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.3),
+        0 0 15px rgba(255, 215, 0, 0.5);
+    z-index: 2;
+}
+
+.cd-disc::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: 
+        radial-gradient(circle at 40% 40%, rgba(100, 150, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 60% 60%, rgba(255, 100, 150, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+@keyframes spinCD {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
+
+    h1:hover {
+        transform: scale(1.05) rotate(-2deg);
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .message {
+        margin-top: 40px;
+        font-size: 1.1em;
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .message:hover {
+        transform: scale(1.03) translateY(-3px);
+    }
+
+    .button {
+        margin-top: 25px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 1em !important;
+        letter-spacing: 0.5px;
+    }
+
+    .cd-disc {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cd-disc::before {
+        width: 38px;
+        height: 38px;
+    }
+
+    .cd-disc::after {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cd-container {
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+        min-height: 100vh;
+    }
+
+    h1 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    h1:hover {
+        transform: scale(1.02);
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    .message {
+        margin-top: 25px;
+        font-size: 0.95em;
+        padding: 12px;
+        max-width: 95%;
+    }
+
+    .message:hover {
+        transform: scale(1.02) translateY(-2px);
+    }
+
+    .button {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 10px 25px;
+        font-size: 0.9em !important;
+        letter-spacing: 0.3px;
+    }
+
+    button:hover {
+        transform: translateY(-2px) scale(1.03);
+    }
+
+    .cd-disc {
+        width: 120px;
+        height: 120px;
+    }
+
+    .cd-disc::before {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cd-disc::after {
+        width: 120px;
+        height: 120px;
+    }
+
+    .cd-container {
+        margin-top: 25px;
+    }
+}
