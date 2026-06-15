@@ -91,6 +91,27 @@ button:active {
     box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
 }
 
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        top: -10px;
+        opacity: 1;
+        transform: translateX(0) rotateZ(0deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+        transform: translateX(100px) rotateZ(720deg);
+    }
+}
+
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;

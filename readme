@@ -129,6 +129,27 @@ button:active {
     box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
 }
 
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        top: -10px;
+        opacity: 1;
+        transform: translateX(0) rotateZ(0deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+        transform: translateX(100px) rotateZ(720deg);
+    }
+}
+
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -151,14 +172,10 @@ button:active {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: 
-        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-        repeating-conic-gradient(
-            from 0deg,
-            #1a1a1a 0deg 2deg,
-            #0d0d0d 2deg 4deg
-        ),
-        radial-gradient(circle, #1a1a1a 0%, #0a0a0a 70%, #000 100%);
+    background-image: url('cd cover.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.7),
         inset 0 2px 5px rgba(255, 255, 255, 0.1),
@@ -345,10 +362,30 @@ function song() {
     
     if (audio.paused) {
         audio.play();
+        createConfetti();
     } else {
         audio.pause();
         audio.currentTime = 0;
     }
 }
+
+function createConfetti() {
+    const colors = ['#ff69b4', '#ff1493', '#ffd4e5', '#c4a7ff', '#a7d8ff', '#ffb8d1', '#ffd700', '#ff00ff'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 0.3 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => confetti.remove(), 4000);
+    }
+}
+
 
 ```
